@@ -21,7 +21,7 @@ FastNet is a simple C# library that helps you get started with your online proje
 ### 2 - NuGet Package
 
 - Open package manager console in Visual Studio.
-- Enter "nuget install Ayboraa.FastNet"
+- Enter "NuGet\Install-Package Ayboraa.FastNet"
     
 ## Examples
 
