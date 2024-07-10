@@ -1,4 +1,4 @@
-﻿namespace FastNet.Tcp
+﻿namespace FastNet
 {
     /// <summary>Contains event data for when a transport successfully establishes a connection to a client.</summary>
     public class ConnectedEventArgs
@@ -17,7 +17,7 @@
     }
 
 
-    
+
     /// <summary>Contains event data for when a connection receives a message.</summary>
     public class MessageEventArgs
     {
@@ -34,7 +34,7 @@
 
 
     }
-    
+
     /// <summary>Contains event data for when a socket is disconnected.</summary>
     public class DisconnectEventArgs
     {

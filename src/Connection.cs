@@ -9,7 +9,8 @@ namespace FastNet
     /// </summary>
     public enum Transport
     {
-        TCP
+        TCP,
+        UDP
     }
 
 

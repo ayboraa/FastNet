@@ -1,4 +1,5 @@
 ﻿using FastNet.Tcp;
+using FastNet.Udp;
 using System;
 using System.Reflection;
 using System.Runtime.Intrinsics.X86;
@@ -13,7 +14,9 @@ namespace FastNet
     {
 
         TcpClient tcpClient;
-        TcpConnection connection;
+        TcpConnection tcpConnection;
+        UdpClient udpClient;
+        UdpConnection udpConnection;
         private Transport _transport;
 
         public EventHandler<ConnectedEventArgs> Connected;
@@ -31,6 +34,10 @@ namespace FastNet
             {
                 tcpClient = new TcpClient(this, bufferSize);
             }
+            else
+            {
+                udpClient = new UdpClient(this, bufferSize);
+            }
 
         }
 
@@ -43,7 +50,10 @@ namespace FastNet
         public bool Connect(string address, Int32 port) {
             string errorReason;
 
-            return tcpClient.Connect(address, port, out connection, out errorReason);
+            if(_transport == Transport.TCP) 
+                return tcpClient.Connect(address, port, out tcpConnection, out errorReason);
+            else
+                return udpClient.Connect(address, port, out udpConnection, out errorReason);
 
         }
 
@@ -52,8 +62,13 @@ namespace FastNet
         /// </summary>
         public void Disconnect() {
 
-            if(connection.Socket.Connected)
+            if (tcpConnection.Socket.Connected)
                 tcpClient.Close();
+            else if (udpConnection.Socket.Connected)
+                udpClient.Close();
+            else
+                return;
+
 
         }
 
@@ -62,18 +77,22 @@ namespace FastNet
         /// </summary>
         /// <param name="msg">Message to send.</param>
         public void Send(Message msg) {
-        
-               if(_transport == Transport.TCP)
-                    connection.Send(msg);
+
+            if (_transport == Transport.TCP)
+                tcpConnection.Send(msg);
+            else
+                udpConnection.Send(msg);
         }
 
         /// <summary>
         /// Polls incoming messages from server.
         /// </summary>
         public void Poll() {
-        
-               if(_transport == Transport.TCP)
-                    tcpClient.Poll();
+
+            if (_transport == Transport.TCP)
+                tcpClient.Poll();
+            else
+                udpClient.Poll();
         }
 
 

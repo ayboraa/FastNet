@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\FastNet\src\FastNet.csproj" />
+    <ProjectReference Include="..\..\..\src\FastNet.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using FastNet.Tcp;
+using FastNet.Udp;
 using System;
 using System.Net;
 
@@ -13,7 +14,9 @@ namespace FastNet
     {
 
         TcpServer tcpServer;
+        UdpServer udpServer;
         private Transport _transport;
+
 
         public EventHandler<ConnectedEventArgs>? Connected;
         public EventHandler<MessageEventArgs>? MessageReceived;
@@ -31,6 +34,10 @@ namespace FastNet
             {
                 tcpServer = new TcpServer(this, address, port, bufferSize, maxPendingConnections);
             }
+            else
+            {
+                udpServer = new UdpServer(this, address, port, bufferSize, maxPendingConnections);
+            }
         
         }
 
@@ -45,6 +52,8 @@ namespace FastNet
 
             if(_transport == Transport.TCP)
                 tcpServer.Broadcast(msg);
+            else
+                udpServer.Broadcast(msg);
 
         }
 
@@ -54,8 +63,10 @@ namespace FastNet
         /// </summary>
         public void CloseConnection(IPEndPoint iPEndPoint) {
 
-            if(_transport == Transport.TCP)
+            if (_transport == Transport.TCP)
                 tcpServer.CloseConnection(iPEndPoint);
+            else
+                udpServer.CloseConnection(iPEndPoint);
 
 
 
@@ -67,6 +78,8 @@ namespace FastNet
 
             if(_transport == Transport.TCP)
                 tcpServer.Start();
+            else
+                udpServer.Start();
 
             Update();
 
@@ -80,6 +93,8 @@ namespace FastNet
 
             if (_transport == Transport.TCP)
                 tcpServer.Poll();
+            else
+                udpServer.Poll();
 
         }
 
