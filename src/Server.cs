@@ -23,13 +23,13 @@ namespace FastNet
         /// <param name="transport">Transport to decide protocol.</param>
         /// <param name="address">IP address to listen on.</param>
         /// <param name="port">Port number to listen on.</param>
-        public Server(Transport transport, string address, int port) {
+        public Server(Transport transport, string address, int port, int bufferSize = 1024, int maxPendingConnections = 5) {
 
             _transport = transport;
 
             if (transport == Transport.TCP)
             {
-                tcpServer = new TcpServer(this, address, port);
+                tcpServer = new TcpServer(this, address, port, bufferSize, maxPendingConnections);
             }
         
         }

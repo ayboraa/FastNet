@@ -9,6 +9,7 @@ namespace ServerExample
     {
 
         public static Server Instance;
+        public static int BufferSize = 1024 * 1024;
 
         public static void Main() {
 
@@ -21,7 +22,7 @@ namespace ServerExample
 
             try
             {
-                myServer = new Server(Transport.TCP, address, port);
+                myServer = new Server(Transport.TCP, address, port, BufferSize);
 
                 myServer.Start();
 

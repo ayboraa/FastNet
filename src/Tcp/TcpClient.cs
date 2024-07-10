@@ -37,6 +37,8 @@ namespace FastNet.Tcp
 
 
             _tcpClient = new System.Net.Sockets.TcpClient();
+            _tcpClient.SendBufferSize = SocketBufferSize;
+            _tcpClient.ReceiveBufferSize = SocketBufferSize;
 
             try { 
                 _tcpClient.Connect(remoteEndPoint);

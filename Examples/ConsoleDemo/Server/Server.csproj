@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="FastNet">
-      <HintPath>..\..\..\src\bin\Debug\net6.0\FastNet.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\FastNet\src\FastNet.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,9 +9,8 @@
 
   <ItemGroup>
     <Reference Include="FastNet">
-      <HintPath>..\..\..\src\bin\Debug\net6.0\FastNet.dll</HintPath>
+      <HintPath>..\..\..\FastNet\src\bin\Debug\net6.0\FastNet.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 
 </Project>

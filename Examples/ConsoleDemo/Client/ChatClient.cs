@@ -28,7 +28,8 @@ namespace ClientExample
                 return;
 
             TcpConnection connection = (TcpConnection)sender;
-            Console.WriteLine(args.Message.ReadString());
+            string msg = args.Message.ReadString();
+            Console.WriteLine(msg);
 
         }
 

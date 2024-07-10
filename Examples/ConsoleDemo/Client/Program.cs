@@ -1,5 +1,6 @@
 ﻿using FastNet;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace ClientExample
@@ -7,17 +8,18 @@ namespace ClientExample
     public class Program
     {
         public static Client Instance;
-
+        public static int BufferSize = 1024 * 1024;
 
         public static void Main() {
 
             const string address = "127.0.0.1";
             const int port = 7250;
+            
 
             Console.Title = "FastNet Chat Client Example";
 
 
-            Instance = new Client(Transport.TCP);
+            Instance = new Client(Transport.TCP, BufferSize);
 
             do
             {
@@ -43,7 +45,7 @@ namespace ClientExample
                 {
 
                     Util.DeletePrevConsoleLine();
-                    Message message = new Message();
+                    Message message = new Message(BufferSize);
                     message.Write(msg);
 
                     Instance.Send(message);

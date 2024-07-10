@@ -1,5 +1,6 @@
 ﻿using FastNet.Tcp;
 using System;
+using System.Reflection;
 using System.Runtime.Intrinsics.X86;
 
 namespace FastNet
@@ -21,14 +22,14 @@ namespace FastNet
 
 
         /// <param name="transport">Transport to create client on.</param>
-        public Client(Transport transport)
+        public Client(Transport transport, int bufferSize = 1024)
         {
 
             _transport = transport;
 
             if (transport == Transport.TCP)
             {
-                tcpClient = new TcpClient(this);
+                tcpClient = new TcpClient(this, bufferSize);
             }
 
         }

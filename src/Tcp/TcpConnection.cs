@@ -59,7 +59,7 @@ namespace FastNet.Tcp
                 return;
 
 
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[Client.ReceiveBufferSize];
             if(Client.Available >= 1 && Client.GetStream().Read(buffer, 0, buffer.Length) != 0) {
 
                 using (Message msg = new Message(buffer.Length, buffer)) {

@@ -44,7 +44,7 @@ namespace ServerExample
 
             string userMessage = args.Message.ReadString();
             Console.WriteLine($"[{connection.Socket.RemoteEndPoint}]: {userMessage}");
-            Message newMsg = new Message();
+            Message newMsg = new Message(Program.BufferSize);
             newMsg.Write($"[{connection.Socket.RemoteEndPoint}]: {userMessage}");
             Program.Instance.Broadcast(newMsg);
 
