@@ -13,7 +13,7 @@ namespace FastNet.Udp
 
         private UdpConnection _connection;
         private Socket socket;
-        protected const int DefaultSocketBufferSize = 1024 * 1024;
+        protected const int DefaultSocketBufferSize = 1024;
         public readonly int SocketBufferSize;
 
         private Client mainClient;

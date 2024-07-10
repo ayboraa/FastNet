@@ -18,7 +18,7 @@ namespace FastNet.Udp
 
         private Socket socket;
         private bool isRunning = false;
-        protected const int DefaultSocketBufferSize = 1024 * 1024;
+        protected const int DefaultSocketBufferSize = 1024;
         private string _listenAddress;
         private Dictionary<IPEndPoint, UdpConnection> connections;
 

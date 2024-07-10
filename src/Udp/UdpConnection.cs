@@ -7,7 +7,7 @@ namespace FastNet.Udp
 
 
     /// <summary>
-    /// A <see cref="Connection"/> that handles Tcp transport.
+    /// A <see cref="Connection"/> that handles Udp transport.
     /// </summary>
     public class UdpConnection : Connection
     {
