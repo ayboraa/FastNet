@@ -25,7 +25,7 @@ FastNet is a simple C# library that helps you get started with your online proje
     
 ## Examples
 
-There examples for you to get started. You can check [examples](/examples) folder.
+There are examples for you to get started. You can check [examples](/examples) folder.
 
 ## License
 
